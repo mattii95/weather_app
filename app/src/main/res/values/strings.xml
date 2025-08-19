@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Weather App</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="weather_title">Clima</string>
+    <string name="cities_title">Ciudades</string>
 </resources>
