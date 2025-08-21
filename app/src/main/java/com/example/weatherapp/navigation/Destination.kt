@@ -5,7 +5,7 @@ import androidx.compose.material.icons.rounded.Cloud
 import androidx.compose.material.icons.rounded.LocationCity
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.weatherapp.R
-import com.example.weatherapp.utils.Constants
+import com.example.weatherapp.common.utils.Constants
 
 enum class Destination(
     val route: String,

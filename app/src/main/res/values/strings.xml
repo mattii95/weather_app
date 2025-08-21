@@ -5,4 +5,7 @@
     <string name="dialog_cancel">Cancelar</string>
     <string name="weather_title">Clima</string>
     <string name="cities_title">Ciudades</string>
+    <string name="empty_string"></string>
+    <string name="weather_search_error">Intente con otra ciudad</string>
+    <string name="general_error">Error desconocido</string>
 </resources>
