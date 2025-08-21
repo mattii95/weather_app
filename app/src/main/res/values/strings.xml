@@ -8,4 +8,5 @@
     <string name="empty_string"></string>
     <string name="weather_search_error">Intente con otra ciudad</string>
     <string name="general_error">Error desconocido</string>
+    <string name="cities_hint_search_city">Buscar por Ciudad</string>
 </resources>

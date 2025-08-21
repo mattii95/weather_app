@@ -10,3 +10,5 @@ val CommonPaddingDefault = 16.dp
 val CommonPaddingMiddle = 24.dp
 val CommonPaddingLarge = 32.dp
 val CommonPaddingXLarge = 64.dp
+
+val MessageVerticalSpace = 40.dp

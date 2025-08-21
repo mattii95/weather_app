@@ -36,4 +36,8 @@ class WeatherViewModel(private val rdb: RemoteDatabase): ViewModel() {
             }
         }
     }
+
+    fun clearMessage() {
+        _uiState.update { it.copy(messageRes = R.string.empty_string) }
+    }
 }

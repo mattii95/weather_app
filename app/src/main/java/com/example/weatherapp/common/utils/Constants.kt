@@ -13,4 +13,7 @@ object Constants {
     const val PARAM_KEY = "key"
     const val PARAM_QUERY = "q"
     const val PARAM_LANGUAGE = "lang"
+
+    const val DURATION_SHORT = 3_000L
+    const val DURATION_LONG = 8_000L
 }

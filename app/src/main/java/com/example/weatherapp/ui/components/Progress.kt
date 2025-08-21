@@ -1,5 +1,8 @@
 package com.example.weatherapp.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -19,14 +22,20 @@ private fun PreviewCustomProgressFullScreen() {
 }
 
 @Composable
-fun CustomProgressFullScreen() {
-    Box(
-        Modifier
-            .fillMaxSize()
-            .background(BackgroundProgressBar)
-            .clickable(interactionSource = null, indication = null) {},
-        contentAlignment = Alignment.Center
+fun CustomProgressFullScreen(visible: Boolean = false) {
+    AnimatedVisibility(
+        visible = visible,
+        enter = fadeIn(),
+        exit = fadeOut()
     ) {
-        CircularProgressIndicator()
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(BackgroundProgressBar)
+                .clickable(interactionSource = null, indication = null) {},
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator()
+        }
     }
 }
