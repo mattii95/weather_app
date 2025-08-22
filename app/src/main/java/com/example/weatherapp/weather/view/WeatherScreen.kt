@@ -82,7 +82,9 @@ fun WeatherView(
                 onSelect = { city ->
                     Log.i("WeatherView", "WeatherView: $city")
                 },
-                onSave = {}
+                onSave = {
+                    viewModel.saveWeatherCity(uiState.data)
+                }
             )
             CustomSnackbar(
                 modifier = Modifier
@@ -163,7 +165,7 @@ private fun ActionsView(
 ) {
     Row(horizontalArrangement = Arrangement.spacedBy(CommonPaddingMin)) {
         CustomDropDownMenu(
-            items = getAllCityPreview(),
+            items = uiState.items,
             labelRes = R.string.cities_city,
             onSelect = { city ->
                 onSelect(city)

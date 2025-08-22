@@ -1,6 +1,8 @@
 package com.example.weatherapp.common.utils
 
 import android.util.Log
+import com.example.weatherapp.common.entities.City
+import com.example.weatherapp.common.entities.Weather
 import com.example.weatherapp.common.entities.WeatherCity
 import com.example.weatherapp.common.entities.WeatherResponse
 
@@ -26,5 +28,23 @@ class FormatUtils {
             Log.e("FormatUtils", "responseToWeatherCity: ${e.message}", )
             return null
         }
+    }
+
+    fun weatherCityToCity(weatherCity: WeatherCity): City {
+        return City(
+            name = weatherCity.name,
+            country = weatherCity.country,
+            lat = weatherCity.lat,
+            lon = weatherCity.lon
+        )
+    }
+
+    fun weatherCityToWeather(weatherCity: WeatherCity): Weather {
+        return Weather(
+            temp_c = weatherCity.temp_c,
+            iconHttps = weatherCity.iconHttps,
+            description = weatherCity.description,
+            wind_kph = weatherCity.wind_kph
+        )
     }
 }

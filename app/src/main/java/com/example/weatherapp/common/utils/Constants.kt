@@ -14,6 +14,17 @@ object Constants {
     const val PARAM_QUERY = "q"
     const val PARAM_LANGUAGE = "lang"
 
+    // Room
+    const val DATABASE_NAME = "db_weather"
+    const val DATABASE_INIT_VERSION = 1
+    // ENTITIES
+    const val ENTITY_CITY = "cities"
+    const val ENTITY_WEATHER = "weathers"
+    // PROPERTIES
+    const val P_NAME = "name"
+    const val P_COUNTRY = "country"
+    const val P_CITY_ID = "cityId"
+
     const val DURATION_SHORT = 3_000L
     const val DURATION_LONG = 8_000L
 }

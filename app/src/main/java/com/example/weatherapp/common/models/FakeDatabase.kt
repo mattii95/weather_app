@@ -3,11 +3,11 @@ package com.example.weatherapp.common.models
 import com.example.weatherapp.common.entities.City
 import com.example.weatherapp.common.entities.WeatherCity
 
-val cityPreview = City("Lima", "", "Perú", 1.2118, -2.1921)
+val cityPreview = City(0,"Lima", "", "Perú", 1.2118, -2.1921)
 
 fun getAllCityPreview() = listOf(
-    City("Cdmx", "", "México", 19.4334565, -99.1331708),
-    City("Madrid", "","España", 40.416775, -3.703790),
+    City(0,"Cdmx", "", "México", 19.4334565, -99.1331708),
+    City(0,"Madrid", "","España", 40.416775, -3.703790),
     cityPreview
 )
 
