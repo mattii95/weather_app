@@ -1,14 +1,15 @@
 package com.example.weatherapp.common.models
 
+import com.example.weatherapp.common.entities.City
 import com.example.weatherapp.common.entities.WeatherCity
 
-//val cityPreview = City("Lima", "Perú", 1.2118, -2.1921)
-//
-//fun getAllCityPreview() = listOf(
-//    City("Cdmx", "México", 19.4334565, -99.1331708),
-//    City("Madrid", "España", 40.416775, -3.703790),
-//    cityPreview
-//)
+val cityPreview = City("Lima", "", "Perú", 1.2118, -2.1921)
+
+fun getAllCityPreview() = listOf(
+    City("Cdmx", "", "México", 19.4334565, -99.1331708),
+    City("Madrid", "","España", 40.416775, -3.703790),
+    cityPreview
+)
 
 
 val weatherCityPreview = WeatherCity(

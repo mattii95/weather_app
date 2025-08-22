@@ -1,5 +1,6 @@
 package com.example.weatherapp.weather.view
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,9 +11,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ArrowDropDown
+import androidx.compose.material.icons.rounded.Save
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,9 +35,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.weatherapp.R
+import com.example.weatherapp.common.entities.City
 import com.example.weatherapp.common.entities.WeatherCity
+import com.example.weatherapp.common.models.getAllCityPreview
 import com.example.weatherapp.common.models.weatherCityPreview
 import com.example.weatherapp.ui.components.CustomCoilImage
+import com.example.weatherapp.ui.components.CustomDropDownMenu
 import com.example.weatherapp.ui.components.CustomProgressFullScreen
 import com.example.weatherapp.ui.components.CustomSnackbar
 import com.example.weatherapp.ui.components.CustomTextTitle
@@ -41,6 +51,7 @@ import com.example.weatherapp.ui.theme.CommonPaddingXLarge
 import com.example.weatherapp.ui.theme.MessageVerticalSpace
 import com.example.weatherapp.ui.theme.Typography
 import com.example.weatherapp.ui.theme.WeatherAppTheme
+import com.example.weatherapp.weather.viewmodel.WeatherUIState
 import com.example.weatherapp.weather.viewmodel.WeatherViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -66,6 +77,13 @@ fun WeatherView(
         ) {
             CustomTextTitle(R.string.weather_title)
             WeatherInfoView(uiState.data)
+            ActionsView(
+                uiState = uiState,
+                onSelect = { city ->
+                    Log.i("WeatherView", "WeatherView: $city")
+                },
+                onSave = {}
+            )
             CustomSnackbar(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -137,6 +155,29 @@ private fun SearchView(onSearch: (String) -> Unit) {
     }
 }
 
+@Composable
+private fun ActionsView(
+    uiState: WeatherUIState,
+    onSelect: (City) -> Unit,
+    onSave: () -> Unit
+) {
+    Row(horizontalArrangement = Arrangement.spacedBy(CommonPaddingMin)) {
+        CustomDropDownMenu(
+            items = getAllCityPreview(),
+            labelRes = R.string.cities_city,
+            onSelect = { city ->
+                onSelect(city)
+            }
+        )
+        OutlinedIconButton(
+            onClick = { onSave() },
+            enabled = uiState.data.name.isNotBlank()
+        ) {
+            Icon(Icons.Rounded.Save, contentDescription = null)
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun WeatherInfoPreview() {
@@ -149,5 +190,12 @@ fun WeatherInfoPreview() {
 fun SearchPreview() {
     WeatherAppTheme {
         SearchView {}
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun ActionsPreview() {
+    WeatherAppTheme {
+        ActionsView(WeatherUIState(), onSelect = {}) {}
     }
 }
