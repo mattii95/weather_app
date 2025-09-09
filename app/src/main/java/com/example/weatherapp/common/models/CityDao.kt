@@ -22,4 +22,10 @@ interface CityDao {
 
     @Query("SELECT * FROM ${Constants.ENTITY_CITY}")
     suspend fun getAllCities(): List<City>
+
+    @Query("SELECT * FROM ${Constants.ENTITY_CITY} " +
+            "WHERE ${Constants.P_NAME} = :name " +
+            "AND ${Constants.P_COUNTRY} = :country " +
+            "Limit 1")
+    suspend fun getCityByNameAndCountry(name: String, country: String): City?
 }

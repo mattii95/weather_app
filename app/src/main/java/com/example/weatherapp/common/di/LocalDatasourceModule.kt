@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.weatherapp.common.models.AppDataBase
 import com.example.weatherapp.common.models.CityDao
+import com.example.weatherapp.common.models.WeatherCityDao
 import com.example.weatherapp.common.models.WeatherDao
 import com.example.weatherapp.common.utils.Constants
 import org.koin.dsl.module
@@ -20,8 +21,11 @@ fun provideCityDao(dataBase: AppDataBase): CityDao = dataBase.cityDao()
 
 fun provideWeatherDao(dataBase: AppDataBase): WeatherDao = dataBase.weatherDao()
 
+fun provideWeatherCityDao(dataBase: AppDataBase): WeatherCityDao = dataBase.weatherCityDao()
+
 val localDatasourceModule = module {
     single { provideCityDao(get()) }
     single { provideWeatherDao(get()) }
+    single { provideWeatherCityDao(get()) }
     single { provideDatabase(get()) }
 }

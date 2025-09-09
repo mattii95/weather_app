@@ -3,6 +3,7 @@ package com.example.weatherapp.weather.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.R
+import com.example.weatherapp.common.entities.City
 import com.example.weatherapp.common.entities.WeatherCity
 import com.example.weatherapp.weather.model.LocalDatabase
 import com.example.weatherapp.weather.model.RemoteDatabase
@@ -44,6 +45,18 @@ class WeatherViewModel(
                     _uiState.update { it.copy(messageRes = R.string.weather_local_save_success) }
                 } else {
                     _uiState.update { it.copy(messageRes = R.string.weather_local_save_error) }
+                }
+            }
+        }
+    }
+
+    fun getWeatherBiCity(city: City) {
+        executeAction {
+            ldb.getWeatherCityByCityId(city.id) { result ->
+                if (result != null) {
+                    _uiState.update { it.copy(data = result) }
+                } else {
+                    _uiState.update { it.copy(messageRes = R.string.weather_local_by_city_error) }
                 }
             }
         }

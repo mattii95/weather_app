@@ -80,7 +80,7 @@ fun WeatherView(
             ActionsView(
                 uiState = uiState,
                 onSelect = { city ->
-                    Log.i("WeatherView", "WeatherView: $city")
+                    viewModel.getWeatherBiCity(city)
                 },
                 onSave = {
                     viewModel.saveWeatherCity(uiState.data)
